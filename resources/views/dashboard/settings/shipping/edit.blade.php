@@ -40,7 +40,7 @@
                                 @include('dashboard.include.alerts.error')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('update.shipping.method',$shippingMethod->id)}}" method="PUT"
+                                        <form class="form" action="{{route('update.shipping.method',$shippingMethod->id)}}" method="post"
                                               enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
@@ -51,24 +51,24 @@
                                                 <div class="row">
                                                     <div class="col-md-6 ">
                                                         <div class="form-group">
-                                                            <label for="name"> {{__('dashboard.Conduction')}} </label>
+                                                            <label for="value"> {{__('dashboard.Conduction')}} </label>
                                                             <input type="text" value="{{$shippingMethod->value}}"
-                                                                   id="name"
+                                                                   id="value"
                                                                    class="form-control"
-                                                                   name="name">
-                                                            @error("name")
+                                                                   name="value">
+                                                            @error("value")
                                                             <span class="text-danger">{{$message}} </span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 ">
                                                         <div class="form-group">
-                                                            <label for="value"> {{__('dashboard.Cost')}} </label>
-                                                            <input type="text" value=""
-                                                                   id="value"
+                                                            <label for="plain_value"> {{__('dashboard.Cost')}} </label>
+                                                            <input type="number" value="{{$shippingMethod->plain_value}}"
+                                                                   id="plain_value"
                                                                    class="form-control"
-                                                                   name="value">
-                                                            @error("value")
+                                                                   name="plain_value">
+                                                            @error("plain_value")
                                                             <span class="text-danger">{{$message}} </span>
                                                             @enderror
                                                         </div>
