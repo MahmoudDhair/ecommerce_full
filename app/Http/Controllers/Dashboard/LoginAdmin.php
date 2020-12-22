@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
+use App\Traits\AuthFunction;
 use Illuminate\Http\Request;
 
 class LoginAdmin extends Controller
 {
+    use AuthFunction;
     public function login()
     {
         return view('dashboard.auth.login');
@@ -20,5 +22,11 @@ class LoginAdmin extends Controller
             return redirect()->route('admin.dashboard');
         }
         return redirect()->back()->with('error', 'اسم المستخدم غير صحيح');
+    }
+
+    public function logout(){
+        $guard = $this->getGuard();
+        $guard->logout();
+        return redirect()->route('admin.login');
     }
 }
